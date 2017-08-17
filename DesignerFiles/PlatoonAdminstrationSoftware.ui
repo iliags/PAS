@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>James Lennon</author>
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>255</horstretch>
+    <verstretch>255</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Platoon Administration Software</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Pictures/GearIcon.png</normaloff>../Pictures/GearIcon.png</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="sizeIncrement">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <layout class="QGridLayout" name="gridLayout" rowstretch="0" columnstretch="0">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetMaximumSize</enum>
+    </property>
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="tab_information">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <attribute name="title">
+        <string>Information</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QListWidget" name="infoListWidget"/>
+        </item>
+        <item row="0" column="1" rowspan="2">
+         <widget class="QCalendarWidget" name="infoCalendarWidget"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QTextBrowser" name="infoTextBrowser"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_calendar">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>10000</width>
+         <height>1000</height>
+        </size>
+       </property>
+       <attribute name="title">
+        <string>Appointments Calendar</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="1" rowspan="4">
+         <widget class="QCalendarWidget" name="aptCalendarWidget">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>10000</width>
+            <height>1000</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QTextBrowser" name="aptTextBrowser"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QListWidget" name="aptListWidget"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_structure">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <attribute name="title">
+        <string>Platoon Structure</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuGenerate_Report">
+    <property name="title">
+     <string>Generate Report</string>
+    </property>
+    <addaction name="actionGenerate_All_Reports"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionUpdate_Information_Board"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuGenerate_Report"/>
+   <addaction name="menuTools"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionAppointment_Calendar">
+   <property name="text">
+    <string>Appointment Calendar</string>
+   </property>
+  </action>
+  <action name="actionInformation_Board">
+   <property name="text">
+    <string>Information Board</string>
+   </property>
+  </action>
+  <action name="actionGenerate_All_Reports">
+   <property name="text">
+    <string>Generate All Reports</string>
+   </property>
+  </action>
+  <action name="actionEdit_Database">
+   <property name="text">
+    <string>Edit Database</string>
+   </property>
+  </action>
+  <action name="actionUpdate_Information_Board">
+   <property name="text">
+    <string>Update Information Board</string>
+   </property>
+  </action>
+  <action name="actionEdit_Database_2">
+   <property name="text">
+    <string>Edit Database</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

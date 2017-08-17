@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>editProfileDialog</class>
+ <widget class="QDialog" name="editProfileDialog">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Edit Profile</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Pictures/GearIcon.png</normaloff>../Pictures/GearIcon.png</iconset>
+  </property>
+  <property name="windowFilePath">
+   <string/>
+  </property>
+  <property name="modal">
+   <bool>false</bool>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetDefaultConstraint</enum>
+   </property>
+   <item row="0" column="1">
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="4" column="0">
+       <widget class="QDialogButtonBox" name="buttonBox">
+        <property name="standardButtons">
+         <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
+        </property>
+        <property name="centerButtons">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="tabPosition">
+         <enum>QTabWidget::South</enum>
+        </property>
+        <property name="tabShape">
+         <enum>QTabWidget::Rounded</enum>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <property name="usesScrollButtons">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="tab_personal">
+         <attribute name="title">
+          <string>Personal</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="l_rank">
+            <property name="text">
+             <string>Rank</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="rankBox"/>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="l_first">
+            <property name="text">
+             <string>First</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3" colspan="3">
+           <widget class="QLineEdit" name="firstEdit">
+            <property name="minimumSize">
+             <size>
+              <width>130</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maxLength">
+             <number>20</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="6">
+           <widget class="QLabel" name="l_middle">
+            <property name="text">
+             <string>Middle</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="7" colspan="3">
+           <widget class="QLineEdit" name="middleEdit">
+            <property name="minimumSize">
+             <size>
+              <width>130</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maxLength">
+             <number>20</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="10">
+           <widget class="QLabel" name="l_last">
+            <property name="text">
+             <string>Last</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="11" colspan="2">
+           <widget class="QLineEdit" name="lastEdit">
+            <property name="minimumSize">
+             <size>
+              <width>130</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maxLength">
+             <number>20</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="13">
+           <widget class="QComboBox" name="suffixBox"/>
+          </item>
+          <item row="1" column="0" colspan="14">
+           <widget class="Line" name="line">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" rowspan="2">
+           <widget class="QLabel" name="l_edipi">
+            <property name="text">
+             <string>EDIPI</string>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" colspan="2">
+           <widget class="QLineEdit" name="edipiEdit">
+            <property name="maxLength">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="4">
+           <widget class="QLabel" name="l_last4">
+            <property name="text">
+             <string>Last 4</string>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="5">
+           <widget class="QLineEdit" name="last4Edit">
+            <property name="maxLength">
+             <number>4</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="6" colspan="2">
+           <widget class="QLabel" name="l_mealCard">
+            <property name="text">
+             <string>Meal Card</string>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="8" colspan="3">
+           <widget class="QLineEdit" name="mealCardEdit">
+            <property name="maxLength">
+             <number>11</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="11">
+           <widget class="QLabel" name="l_dob">
+            <property name="text">
+             <string>DOB</string>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="12" colspan="2">
+           <widget class="QDateEdit" name="dobEdit">
+            <property name="dateTime">
+             <datetime>
+              <hour>0</hour>
+              <minute>0</minute>
+              <second>0</second>
+              <year>2090</year>
+              <month>1</month>
+              <day>1</day>
+             </datetime>
+            </property>
+            <property name="date">
+             <date>
+              <year>2090</year>
+              <month>1</month>
+              <day>1</day>
+             </date>
+            </property>
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="14">
+           <widget class="Line" name="line_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0" rowspan="3">
+           <widget class="QLabel" name="l_eas">
+            <property name="text">
+             <string>EAS</string>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="4" rowspan="3">
+           <widget class="QLabel" name="l_mos">
+            <property name="text">
+             <string>MOS</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="7" rowspan="3" colspan="2">
+           <widget class="QLabel" name="l_superRankName">
+            <property name="text">
+             <string>Supervisor</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1" rowspan="2" colspan="2">
+           <widget class="QDateEdit" name="easEdit"/>
+          </item>
+          <item row="6" column="5" rowspan="2">
+           <widget class="QLineEdit" name="mosEdit">
+            <property name="maxLength">
+             <number>4</number>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="10" rowspan="2" colspan="3">
+           <widget class="QLineEdit" name="superLastEdit">
+            <property name="maxLength">
+             <number>20</number>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="9">
+           <widget class="QComboBox" name="superRankBox"/>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="l_billet">
+            <property name="text">
+             <string>Billet</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1" colspan="4">
+           <widget class="QComboBox" name="billetBox">
+            <property name="minimumSize">
+             <size>
+              <width>140</width>
+              <height>30</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="5" colspan="2">
+           <widget class="QLineEdit" name="billetEdit">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="maxLength">
+             <number>20</number>
+            </property>
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="7" colspan="2">
+           <widget class="QLabel" name="l_blood">
+            <property name="text">
+             <string>Blood Type</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="9">
+           <widget class="QComboBox" name="bloodBox"/>
+          </item>
+          <item row="9" column="1">
+           <widget class="QLabel" name="l_rfid">
+            <property name="text">
+             <string>RFID</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="0" colspan="3">
+           <widget class="QTextEdit" name="rfidEdit">
+            <property name="tabStopWidth">
+             <number>30</number>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="0" colspan="14">
+           <widget class="Line" name="line_3">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="11" colspan="3">
+           <widget class="QTextEdit" name="allergyEdit"/>
+          </item>
+          <item row="9" column="12">
+           <widget class="QLabel" name="l_allergies">
+            <property name="text">
+             <string>Allergies</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+         <zorder>l_last4</zorder>
+         <zorder>l_edipi</zorder>
+         <zorder>line</zorder>
+         <zorder>dobEdit</zorder>
+         <zorder>line_2</zorder>
+         <zorder>easEdit</zorder>
+         <zorder>l_billet</zorder>
+         <zorder>allergyEdit</zorder>
+         <zorder>rfidEdit</zorder>
+         <zorder>l_rank</zorder>
+         <zorder>lastEdit</zorder>
+         <zorder>suffixBox</zorder>
+         <zorder>mealCardEdit</zorder>
+         <zorder>l_last</zorder>
+         <zorder>middleEdit</zorder>
+         <zorder>rankBox</zorder>
+         <zorder>l_first</zorder>
+         <zorder>firstEdit</zorder>
+         <zorder>l_dob</zorder>
+         <zorder>l_mos</zorder>
+         <zorder>l_eas</zorder>
+         <zorder>mosEdit</zorder>
+         <zorder>superRankBox</zorder>
+         <zorder>superLastEdit</zorder>
+         <zorder>billetBox</zorder>
+         <zorder>billetEdit</zorder>
+         <zorder>l_blood</zorder>
+         <zorder>bloodBox</zorder>
+         <zorder>l_rfid</zorder>
+         <zorder>l_superRankName</zorder>
+         <zorder>l_middle</zorder>
+         <zorder>last4Edit</zorder>
+         <zorder>l_mealCard</zorder>
+         <zorder>edipiEdit</zorder>
+         <zorder>line_3</zorder>
+         <zorder>l_allergies</zorder>
+        </widget>
+        <widget class="QWidget" name="tab_contact">
+         <attribute name="title">
+          <string>Contact</string>
+         </attribute>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QLabel" name="l_email">
+            <property name="text">
+             <string>Email Address</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="emailEdit">
+            <property name="maxLength">
+             <number>50</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="l_homePhone">
+            <property name="text">
+             <string>Home Phone</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="homePhoneEdit">
+            <property name="maxLength">
+             <number>14</number>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="l_cell">
+            <property name="text">
+             <string>Cell Phone</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="lineEdit_3">
+            <property name="maxLength">
+             <number>14</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="l_resident">
+            <property name="text">
+             <string>Residential Address</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QTextEdit" name="residentialEdit"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="l_mailing">
+            <property name="text">
+             <string>Mailing Address</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QTextEdit" name="mailingEdit"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_training">
+         <attribute name="title">
+          <string>Training</string>
+         </attribute>
+         <widget class="QLineEdit" name="pvsSerial">
+          <property name="geometry">
+           <rect>
+            <x>139</x>
+            <y>126</y>
+            <width>148</width>
+            <height>33</height>
+           </rect>
+          </property>
+          <property name="maxLength">
+           <number>40</number>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="rifleSerial">
+          <property name="geometry">
+           <rect>
+            <x>139</x>
+            <y>9</y>
+            <width>148</width>
+            <height>33</height>
+           </rect>
+          </property>
+          <property name="maxLength">
+           <number>40</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="l_rifleSerial">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>91</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>M16/M4 Serial</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="pistolSerial">
+          <property name="geometry">
+           <rect>
+            <x>139</x>
+            <y>48</y>
+            <width>148</width>
+            <height>33</height>
+           </rect>
+          </property>
+          <property name="maxLength">
+           <number>40</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="l_pistolSerial">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>50</y>
+            <width>51</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>M9 Serial</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="peqSerial">
+          <property name="geometry">
+           <rect>
+            <x>139</x>
+            <y>87</y>
+            <width>148</width>
+            <height>33</height>
+           </rect>
+          </property>
+          <property name="maxLength">
+           <number>40</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="l_peqSerial">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>90</y>
+            <width>81</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>PEQ-15 Serial</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="l_pvsSerial">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>130</y>
+            <width>91</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>AN/PVS-14 Serial</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="mwrapCheck">
+          <property name="geometry">
+           <rect>
+            <x>290</x>
+            <y>190</y>
+            <width>75</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>MRAP</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="stonCheck">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>190</y>
+            <width>74</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>7-TON</string>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="hmmwvCheck">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>190</y>
+            <width>93</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>HMMWV</string>
+          </property>
+         </widget>
+         <widget class="QTableWidget" name="tableWidget">
+          <property name="geometry">
+           <rect>
+            <x>440</x>
+            <y>260</y>
+            <width>311</width>
+            <height>221</height>
+           </rect>
+          </property>
+          <property name="columnCount">
+           <number>3</number>
+          </property>
+          <column>
+           <property name="text">
+            <string>DLPT</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Date</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Score</string>
+           </property>
+          </column>
+         </widget>
+         <widget class="QLineEdit" name="dlptScore">
+          <property name="geometry">
+           <rect>
+            <x>522</x>
+            <y>100</y>
+            <width>211</width>
+            <height>33</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="dlptLanguage">
+          <property name="geometry">
+           <rect>
+            <x>522</x>
+            <y>10</y>
+            <width>211</width>
+            <height>33</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QDateEdit" name="dlptDate">
+          <property name="geometry">
+           <rect>
+            <x>520</x>
+            <y>60</y>
+            <width>211</width>
+            <height>33</height>
+           </rect>
+          </property>
+          <property name="date">
+           <date>
+            <year>2015</year>
+            <month>1</month>
+            <day>1</day>
+           </date>
+          </property>
+          <property name="calendarPopup">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="Line" name="line_4">
+          <property name="geometry">
+           <rect>
+            <x>370</x>
+            <y>-10</y>
+            <width>20</width>
+            <height>501</height>
+           </rect>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="buttonRemove">
+          <property name="geometry">
+           <rect>
+            <x>620</x>
+            <y>160</y>
+            <width>101</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Remove</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="buttonAdd">
+          <property name="geometry">
+           <rect>
+            <x>480</x>
+            <y>160</y>
+            <width>101</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Add</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="l_dlpt_language">
+          <property name="geometry">
+           <rect>
+            <x>390</x>
+            <y>10</y>
+            <width>121</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>DLPT Language</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="l_dlpt_date">
+          <property name="geometry">
+           <rect>
+            <x>400</x>
+            <y>60</y>
+            <width>91</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>DLPT Date</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="l_dlpt_score">
+          <property name="geometry">
+           <rect>
+            <x>400</x>
+            <y>100</y>
+            <width>91</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>DLPT Score</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tab_dependants">
+         <attribute name="title">
+          <string>Dependants</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_appointments">
+         <attribute name="title">
+          <string>Appointments</string>
+         </attribute>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
