@@ -9,6 +9,7 @@ import sys
 import logging
 import sqlite3
 import re
+import Main as mainClass
 
 dataPath = os.getcwd()+"/data/"
 edipi = ""
@@ -111,10 +112,14 @@ class EditUserDialog(QDialog, pyEditWindow.Ui_editProfileDialog):
 		
 		
 		#Must be last
-		edipi = self.edipiEdit.text()
-		
-		#Load values from the database
-		#self.dbCursor.execute("""SELECT * FROM DLPT WHERE edipi = ?""", edipi)
+		if(mainClass.gEDIPI == "new"):
+			edipi = ""
+			mainClass.gEDIPI = ""
+		else:	
+			edipi = self.edipiEdit.text()	
+			#Load values from the database
+			
+			#self.dbCursor.execute("""SELECT * FROM DLPT WHERE edipi = ?""", edipi)
 		
 		
 	def StandardButtonPress(self, button):
@@ -122,6 +127,7 @@ class EditUserDialog(QDialog, pyEditWindow.Ui_editProfileDialog):
 		if sb == QDialogButtonBox.Save:
 			self.dbConn.commit()
 		elif sb == QDialogButtonBox.Cancel:
+			gEDIPI = ""
 			self.close()
 		
 		

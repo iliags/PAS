@@ -6,6 +6,7 @@ Created on Fri Aug 11 17:36:15 2017
 """
 from PySide import QtCore
 from Queue import Queue, Empty
+from PySide.QtCore import Signal, Slot
 
 import usb.core
 import usb.util
@@ -28,9 +29,13 @@ reader adds a newline character (the number 40) at the end but we don't need it
 
 
 class Worker_RFID(QtCore.QObject):
+	
+	notify = Signal(str)
+	
 	def __init__(self, queue, *args, **kwargs):
 		QtCore.QObject.__init__(self, *args, **kwargs)
 		self.queue = queue
+		global  gCard;
 	
 		#This can be found by typing 'lsusb' and it will be listed as xxxx:xxxx
 		#so it's read as <VendorID> : <ProductID>
@@ -49,7 +54,7 @@ class Worker_RFID(QtCore.QObject):
 		self.endpoint = self.device[0][(0,0)][0] 
 		
 		
-
+	#Thread loop
 	def run(self):
 		self.active = True
 		
@@ -81,7 +86,9 @@ class Worker_RFID(QtCore.QObject):
 			except:
 				pass
 			
+			#If we have data that isn't null
 			if data:
+				time.sleep(0.05)
 				temp = str(data)
 				data = None
 				for x in range(0, len(temp)):
@@ -89,9 +96,18 @@ class Worker_RFID(QtCore.QObject):
 						self.cardString += self.converter.get(temp[x]+temp[x+1], "")
 			
 				#If the card read is complete then send it up for verification
-				if len(self.cardString) >= 8:
+				
+				
+				if len(self.cardString) >= 7:
+					#print "Pre-emit"
+					#Send it up
+					gCard = self.cardString
+					self.notify.emit(gCard)
+					#print "Post-emit"
+					#Reset the string
 					self.cardString = ""	
-
+					#print "Reset"
 			
-		print "Finished"
+			
+		print "Finished Thread"
 		

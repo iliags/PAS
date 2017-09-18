@@ -8,6 +8,7 @@ from PySide import QtUiTools
 
 #Standard or System Libraries
 from Queue import Queue, Empty
+from PySide.QtCore import Signal, Slot
 import os.path
 import time
 import sys
@@ -22,7 +23,8 @@ import edituserdialog as edituser
 import rfidthread as rThread
 
 
-
+#Global Variables
+gEDIPI = ""
 
 #Check for the data folder
 dataPath = os.getcwd()+"/data/"
@@ -64,9 +66,15 @@ class Main(QtGui.QMainWindow, pyMainWindow.Ui_MainWindow):
 		self.thread.started.connect(self.worker.run)
 		self.thread.start()
 		
+		#Create signals
+		self.scannedCard = Signal(str)
+		
 		#Connect actions
 		self.actionExit.triggered.connect(self.close)
 		self.actionUpdate_Information_Board.triggered.connect(self.update_info_board)
+		self.worker.notify.connect(self.check_edipi)
+		#self.scannedCard.connect(self.worker)
+		
 		
 		
 		
@@ -76,56 +84,56 @@ class Main(QtGui.QMainWindow, pyMainWindow.Ui_MainWindow):
 		
 		#Main table
 		self.dbCursor.execute("""CREATE TABLE IF NOT EXISTS Main(edipi TEXT PRIMARY KEY, 
-				rank TEXT,
-				firstName TEXT, 
-				middleName TEXT, 
-				lastName TEXT, 
-				suffix TEXT,
-				mealCardTEXT, 
-				squad TEXT, 
-				billet TEXT, 
-				mos INTEGER, 
-				livingAddress TEXT, 
-				mailingAddress TEXT, 
-				easDate TEXT, 
-				lastFour INTEGER, 
-				phoneNumber TEXT, 
-				personalEmail TEXT, 
-				birthDate TEXT, 
-				marritalStatus TEXT, 
-				bloodType TEXT, 
-				allergies TEXT, 
-				rfidCard TEXT)""")
+			rank TEXT,
+			firstName TEXT, 
+			middleName TEXT, 
+			lastName TEXT, 
+			suffix TEXT,
+			mealCardTEXT, 
+			squad TEXT, 
+			billet TEXT, 
+			mos INTEGER, 
+			livingAddress TEXT, 
+			mailingAddress TEXT, 
+			easDate TEXT, 
+			lastFour INTEGER, 
+			phoneNumber TEXT, 
+			personalEmail TEXT, 
+			birthDate TEXT, 
+			marritalStatus TEXT, 
+			bloodType TEXT, 
+			allergies TEXT, 
+			rfidCard TEXT)""")
 		 
 		#Weapon table
 		self.dbCursor.execute("""CREATE TABLE IF NOT EXISTS Weapons(id INTEGER PRIMARY KEY, 
-		rifleSerial TEXT, 
-		pistolSerial TEXT,
-		edipi TEXT)""")
+			rifleSerial TEXT, 
+			pistolSerial TEXT,
+			edipi TEXT)""")
 		
 		#DLPT table
 		self.dbCursor.execute("""CREATE TABLE IF NOT EXISTS DLPT(id INTEGER PRIMARY KEY,
-		dlptTitle TEXT,
-		dlptDate TEXT,
-		dlptScore TEXT,
-		edipi TEXT)""")
+			dlptTitle TEXT,
+			dlptDate TEXT,
+			dlptScore TEXT,
+			edipi TEXT)""")
 		
 		#Dependa table
 		self.dbCursor.execute("""CREATE TABLE IF NOT EXISTS Dependa(id INTEGER PRIMARY KEY, 
-				firstName TEXT, 
-				middleName TEXT, 
-				lastName TEXT, 
-				livingAddress TEXT, 
-				mailingAddress TEXT,
-				dob TEXT,
-				edipi TEXT)""")
+			firstName TEXT, 
+			middleName TEXT, 
+			lastName TEXT, 
+			livingAddress TEXT, 
+			mailingAddress TEXT,
+			dob TEXT,
+			edipi TEXT)""")
 		
 		#License table
 		self.dbCursor.execute("""CREATE TABLE IF NOT EXISTS License(id INTEGER PRIMARY KEY,
-		hmmwv INTEGER,
-		sevenTon INTEGER,
-		mwrap INTEGER,
-		edipi TEXT)""")
+			hmmwv INTEGER,
+			sevenTon INTEGER,
+			mwrap INTEGER,
+			edipi TEXT)""")
 		
 		#Save the database
 		self.dbConn.commit()
@@ -133,7 +141,7 @@ class Main(QtGui.QMainWindow, pyMainWindow.Ui_MainWindow):
 		
 		
 	def close(self):
-		"""Exit the program (File->Exit)"""
+		# Exit the program (File->Exit)
 		self.closeEvent()
 		
 		
@@ -145,6 +153,19 @@ class Main(QtGui.QMainWindow, pyMainWindow.Ui_MainWindow):
 		time.sleep(0.2)
 		exit()
 		
+	#Executed when the thread detects and EDIPI
+	@QtCore.Slot(str)
+	def check_edipi(self, value):
+		print "Checking scanned card..."
+		dbEDIPI = self.dbCursor.execute("""SELECT edipi FROM Main WHERE rfidCard="""+value+"""""")
+		if(dbEDIPI == value):
+			print "Found:" + dbEDIPI
+			self.gEDIPI = dbEDIPI;
+		else:
+			print "Account not found, making new account"
+			self.gEDIPI = "new"
+			
+		self.edit_user()
 	
 	def reports_generate_all(self):
 		"""Generate all report formats"""
