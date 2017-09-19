@@ -27,10 +27,9 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=2
-FILE_NAME_0=3916;Python;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2FPython%2FPAS%2Fmain.py;0;4
-FILE_NAME_1=2797;Python;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2FPython%2FPAS%2Frfidthread.py;0;4
-FILE_NAME_2=2947;Python;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2FPython%2FPAS%2Fedituserdialog.py;0;4
+current_page=0
+FILE_NAME_0=3852;Python;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2FPython%2FPAS%2Fmain.py;0;4
+FILE_NAME_1=3317;Python;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2FPython%2FPAS%2Fedituserdialog.py;0;4
 
 [VTE]
 last_dir=/home/pi

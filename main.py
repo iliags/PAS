@@ -23,8 +23,7 @@ import edituserdialog as edituser
 import rfidthread as rThread
 
 
-#Global Variables
-gEDIPI = ""
+
 
 #Check for the data folder
 dataPath = os.getcwd()+"/data/"
@@ -51,12 +50,12 @@ class Main(QtGui.QMainWindow, pyMainWindow.Ui_MainWindow):
 	dbPath = dataPath + "pData.db"
 	dbConn = sqlite3.connect(dbPath)
 	
+	
+	
 	def __init__(self, parent=None):
 		super(Main, self).__init__(parent)
 		self.setupUi(self)  
-		
-		#self.eWin = edituser.EditUserDialog()
-		#self.eWin.show()
+		self.gEDIPI = ""
 		
 		#Setup the RFID reader thread
 		self.queue = Queue()
@@ -73,11 +72,7 @@ class Main(QtGui.QMainWindow, pyMainWindow.Ui_MainWindow):
 		self.actionExit.triggered.connect(self.close)
 		self.actionUpdate_Information_Board.triggered.connect(self.update_info_board)
 		self.worker.notify.connect(self.check_edipi)
-		#self.scannedCard.connect(self.worker)
-		
-		
-		
-		
+
 		
 		#Create the database if it doesn't exist
 		self.dbCursor = self.dbConn.cursor()
@@ -85,24 +80,26 @@ class Main(QtGui.QMainWindow, pyMainWindow.Ui_MainWindow):
 		#Main table
 		self.dbCursor.execute("""CREATE TABLE IF NOT EXISTS Main(edipi TEXT PRIMARY KEY, 
 			rank TEXT,
-			firstName TEXT, 
-			middleName TEXT, 
-			lastName TEXT, 
+			firstName TEXT,
+			middleName TEXT,
+			lastName TEXT,
 			suffix TEXT,
-			mealCardTEXT, 
-			squad TEXT, 
-			billet TEXT, 
-			mos INTEGER, 
-			livingAddress TEXT, 
-			mailingAddress TEXT, 
-			easDate TEXT, 
-			lastFour INTEGER, 
-			phoneNumber TEXT, 
+			mealCard TEXT,
+			superRank TEXT,
+			superName TEXT,
+			billet TEXT,
+			billetText TEXT,
+			mos INTEGER,
+			livingAddress TEXT,
+			mailingAddress TEXT,
+			easDate TEXT,
+			lastFour INTEGER,
+			phoneNumber TEXT,
+			cellNumber TEXT,
 			personalEmail TEXT, 
 			birthDate TEXT, 
-			marritalStatus TEXT, 
 			bloodType TEXT, 
-			allergies TEXT, 
+			allergies TEXT,
 			rfidCard TEXT)""")
 		 
 		#Weapon table
@@ -153,22 +150,8 @@ class Main(QtGui.QMainWindow, pyMainWindow.Ui_MainWindow):
 		time.sleep(0.2)
 		exit()
 		
-	#Executed when the thread detects and EDIPI
-	@QtCore.Slot(str)
-	def check_edipi(self, value):
-		print "Checking scanned card..."
-		dbEDIPI = self.dbCursor.execute("""SELECT edipi FROM Main WHERE rfidCard="""+value+"""""")
-		if(dbEDIPI == value):
-			print "Found:" + dbEDIPI
-			self.gEDIPI = dbEDIPI;
-		else:
-			print "Account not found, making new account"
-			self.gEDIPI = "new"
-			
-		self.edit_user()
-	
 	def reports_generate_all(self):
-		"""Generate all report formats"""
+		#Generate all report formats
 		pass
 	
 	def update_info_board(self):
@@ -177,11 +160,24 @@ class Main(QtGui.QMainWindow, pyMainWindow.Ui_MainWindow):
 		pass
 		
 	def edit_user(self):
-            self.eWin = edituser.EditUserDialog()
+            self.eWin = edituser.EditUserDialog(self.gEDIPI)
             self.eWin.show()
 		
+	#Executed when the thread detects and EDIPI
+	@QtCore.Slot(str)
+	def check_edipi(self, value):
+		print "Checking scanned card..."
+		#dbEDIPI =  self.dbCursor.execute("""SELECT edipi FROM Main WHERE rfidCard="""+value+"""""")
+		print dbEDIPI
+		if(dbEDIPI):
+			print "Found"
+			#self.gEDIPI = dbEDIPI
+			#self.edit_user()
+		else:
+			print "Account not found, making new account"
+			self.gEDIPI = "new"
+			self.edit_user()
 
-        
 	
 	#Information board things
 	
