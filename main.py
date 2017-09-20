@@ -49,6 +49,7 @@ class Main(QtGui.QMainWindow, pyMainWindow.Ui_MainWindow):
 	#Set the path for the database and create a connection
 	dbPath = dataPath + "pData.db"
 	dbConn = sqlite3.connect(dbPath)
+	dbConn.text_factory = str
 	
 	
 	
@@ -167,24 +168,22 @@ class Main(QtGui.QMainWindow, pyMainWindow.Ui_MainWindow):
 	@QtCore.Slot(str)
 	def check_edipi(self, value):
 		print "Checking scanned card..."
-		#dbEDIPI =  self.dbCursor.execute("""SELECT edipi FROM Main WHERE rfidCard="""+value+"""""")
-		print dbEDIPI
+		self.dbCursor.execute("SELECT edipi FROM Main WHERE rfidCard=(?)", (value, ))
+		dbEDIPI = self.dbCursor.fetchone()
 		if(dbEDIPI):
 			print "Found"
-			#self.gEDIPI = dbEDIPI
-			#self.edit_user()
+			self.gEDIPI = dbEDIPI[0]
+			self.edit_user()
 		else:
 			print "Account not found, making new account"
 			self.gEDIPI = "new"
 			self.edit_user()
-
 	
 	#Information board things
 	
 	#Appointment board things
 	
 	#Platoon structure things
-	
 	
 
 def main():

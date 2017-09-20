@@ -93,17 +93,20 @@ class Worker_RFID(QtCore.QObject):
 				for x in range(0, len(temp)):
 					if x+1 < len(temp):
 						self.cardString += self.converter.get(temp[x]+temp[x+1], "")
-									
-			
-				time.sleep(0.01)
+						print self.cardString
+						print len(self.cardString)
 				
+			
 				#If the card read is complete then send it up for verification				
-				if len(self.cardString) == 8:
+				if len(self.cardString) == 7:
+					#print "Pre-emit"
 					#Send it up
+					print self.cardString
 					self.notify.emit(self.cardString)
-					
+					#print "Post-emit"
 					#Reset the string
-					self.cardString = ""
+					self.cardString = ""	
+					#print "Reset"
 			
 			
 		print "Finished Thread"

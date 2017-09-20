@@ -1,6 +1,5 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
-
 from ui_files import pyEditWindow
 
 import os.path
@@ -125,34 +124,63 @@ class EditUserDialog(QDialog, pyEditWindow.Ui_editProfileDialog):
 		elif myEDIPI:
 			print "Loading data"	
 			#Load values from the database
-			self.dbCursor.execute("""SELECT * FROM DLPT WHERE edipi=?""", myEDIPI)
-			records = cursor.fetchall()
+			self.dbCursor.execute("SELECT * FROM Main WHERE edipi=(?)", (myEDIPI, ))
+			records = self.dbCursor.fetchall()
 		
 			for record in records:
 				#self.edipiEdit = edipi
-				self.rankBox = record[1]
-				self.firstEdit = record[2]
-				self.middleEdit = record[3]
-				self.lastEdit = record[4]
-				self.suffixBox = record[5]
-				self.mealCardEdit = record[6]
-				self.superRankBox = record[7]
-				self.superLastEdit = record[8]
-				self.billetBox = record[9]
-				self.billetEdit = record[10]	
-				self.mosEdit = record[11]
-				self.residentialEdit = record[12]
-				self.mailingEdit = record[13]
-				self.easEdit = record[14]
-				self.last4Edit = record[15]
-				self.homePhoneEdit = record[16]
-				self.lineEdit_3 = record[17]
-				self.emailEdit = record[18]
-				self.dobEdit = record[19]
-				self.bloodBox = record[20]
+								
+				index = self.rankBox.findText(record[1], Qt.MatchFixedString)
+				if index >= 0:
+					self.rankBox.setCurrentIndex(index)
+					
+				self.firstEdit.setText(record[2])
+				self.middleEdit.setText(record[3])
+				self.lastEdit.setText(record[4])
+				
+				index = self.suffixBox.findText(record[5], Qt.MatchFixedString)
+				if index >= 0:
+					self.suffixBox.setCurrentIndex(index)
+					
+				self.mealCardEdit.setText(record[6])				
+				
+				index = self.superRankBox.findText(record[7], Qt.MatchFixedString)
+				if index >= 0:
+					self.superRankBox.setCurrentIndex(index)
+				
+				self.superLastEdit.setText(record[8])
+				
+				index = self.billetBox.findText(record[9], Qt.MatchFixedString)
+				if index >= 0:
+					self.billetBox.setCurrentIndex(index)
+				
+				self.billetEdit.setText(record[10])
+				self.mosEdit.setText(str(record[11]))
+				self.residentialEdit.setText(record[12])
+				self.mailingEdit.setText(record[13])
+				
+				tempDate = record[14]
+				self.easEdit.setDate(QDate(int(tempDate.split('/')[0]), int(tempDate.split('/')[1]), int(tempDate.split('/')[2])))
+				
+				self.last4Edit.setText(str(record[15]))
+				self.homePhoneEdit.setText(str(record[16]))
+				self.lineEdit_3.setText(record[17])
+				self.emailEdit.setText(record[18])
+				
+				tempDate = record[19]
+				self.dobEdit.setDate(QDate(int(tempDate.split('/')[0]), int(tempDate.split('/')[1]), int(tempDate.split('/')[2])))
+				#self.dobEdit.setText(record[19])
+				
+				
+				index = self.bloodBox.findText(record[20], Qt.MatchFixedString)
+				if index >= 0:
+					self.bloodBox.setCurrentIndex(index)
+				
+				
+				
 				self.allergyEdit = record[21]
-				self.rfidEdit = record[22]
-							
+				self.rfidEdit = record[22]				
+				
 		else:
 			raise ValueError('Error finding or creating account')
 
